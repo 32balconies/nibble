@@ -1,1 +1,17 @@
 extends Control
+
+# TODO: HANDLE BOBBER COLLISION
+# TODO: DESIGN FISHING MINIGAME A LA NOT STARDEW (MAYBE MULTIPLE FISH AT ONCE?)
+# TODO: HANDLE FOOTPRINT FADE
+# TODO: SET UP AUDIO
+# TODO: TWEAK PROGRESS BAR
+# TODO: TWEAK DIALOGUE
+# TODO: SET UP INSTANTIATION OF WORLD TO LOAD INSTEAD OF HARD CODE
+
+@onready var world: Node2D = %World
+
+var bobber_check = false
+
+func _on_bobber_area_area_entered(area: Area2D) -> void:
+	bobber_check = true
+	# HANDLE

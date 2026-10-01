@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://b0d0sv7134g18"]
 
 [ext_resource type="Script" uid="uid://w5qjn5bc565y" path="res://Scripts/bobber.gd" id="1_k5kt6"]
+[ext_resource type="Resource" uid="uid://cmrauy857phm2" path="res://Fish/Test Fish.tres" id="2_hmvg0"]
 [ext_resource type="Texture2D" uid="uid://pfddgbpm5o37" path="res://Sprites/bobber-export.png" id="2_k5kt6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_c26io"]
-radius = 2.236068
 
 [node name="Bobber" type="RigidBody2D" unique_id=1079613409]
 z_index = 1
@@ -14,12 +12,12 @@ can_sleep = false
 linear_damp_mode = 1
 linear_damp = 1.0
 script = ExtResource("1_k5kt6")
-cast_distance = 125.0
-cast_height = 150.0
-bobber_offset = 40.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1221766291]
-shape = SubResource("CircleShape2D_c26io")
+fish_data = ExtResource("2_hmvg0")
+cast_distance = 75.0
+cast_height = 100.0
+bobber_offset = 19.0
+line_width = 0.5
+line_tension = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1462578067]
 texture = ExtResource("2_k5kt6")

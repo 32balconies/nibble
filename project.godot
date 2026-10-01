@@ -14,6 +14,10 @@ config/name="Nibble"
 run/main_scene="uid://c27sdg0aqbsa2"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="uid://c342batygj2ff"
+
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
@@ -32,8 +36,8 @@ layout/default_style="Default"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=320
+window/size/viewport_height=180
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

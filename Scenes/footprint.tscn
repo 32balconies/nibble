@@ -6,7 +6,6 @@
 
 [node name="Footprint" type="Node2D" unique_id=1949048949]
 script = ExtResource("1_2xoui")
-range = 0.25
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=189171195]
 texture = ExtResource("1_qhidt")
@@ -19,5 +18,6 @@ autostart = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2055767628]
 stream = ExtResource("3_r6ia5")
 autoplay = true
+bus = &"Sound Effects"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

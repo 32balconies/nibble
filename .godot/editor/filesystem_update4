@@ -1,2 +1,9 @@
+res://Scenes/fish.tscn
+res://Scripts/fish.gd
+res://Scripts/FishData.gd
+res://Fish/Test Fish.tres
 res://Scenes/main.tscn
 res://Scripts/PlayerController.gd
+res://Scripts/bobber.gd
+res://Scenes/bobber.tscn
+res://Scripts/main.gd

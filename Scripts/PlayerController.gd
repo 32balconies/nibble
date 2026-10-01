@@ -1,11 +1,5 @@
 extends CharacterBody2D
 
-# EXISTING BUGS:
-
-# TODO: HANDLE BOBBER COLLISION
-# TODO: DEFINE FISHDATA RESOURCE AND IMPLEMENT
-# TODO: DESIGN FISHING MINIGAME A LA NOT STARDEW
-
 const FOOTPRINT_SCENE = preload("res://Scenes/footprint.tscn")
 const BOBBER_SCENE = preload("res://Scenes/bobber.tscn")
 
@@ -14,9 +8,12 @@ const BOBBER_SCENE = preload("res://Scenes/bobber.tscn")
 @onready var world = %World
 @onready var progress_bar = $ProgressBar
 
+@export var fish_data: FishData
 @export var raycast_length : int = 3
 @export var bobber_offset : int = -50
 @export var cast_duration : int = 2
+@export var move_speed = 100
+@export var footstep_offset: float = 10.0
 
 enum State {IDLE, WALK, CHARGING, CAST, REEL}
 enum Direction {UP, DOWN, LEFT, RIGHT}
@@ -25,11 +22,8 @@ var current_dir := Direction.DOWN
 var cast_active := false
 var bobber_instance
 var cast_charge: float = 0.0
-var charging = false
-var reeling = false
 
-@export var move_speed = 100
-
+# TODO: REFORMAT TO TAKE ADVANTAGE OF STATES
 func _ready() -> void:
 	pass
 
@@ -46,6 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					current_state = State.REEL
 					print("REEL BUTTON HIT AND BOBBER REACHED DESTINATION, REEL START")
 			State.REEL:
+				kill_bobber()
 				current_state = State.IDLE
 				print("CONFIRM BUTTON HIT, RETURN TO IDLE")
 			State.CHARGING:
@@ -155,13 +150,25 @@ func handle_bobber(charge: float = 0.0):
 				world.add_child(bobber_instance)
 		State.REEL:
 			print("CALLING REEL ON %s" % bobber_instance)
-			if bobber_instance:
-				bobber_instance.call_deferred("queue_free")
+			bobber_instance.reel()
 			cast_charge = 0
+
+func kill_bobber():
+	bobber_instance.call_deferred("queue_free")
+	current_state = State.IDLE
+	cast_charge = 0
 
 func handle_footstep():
 	var footstep_instance = FOOTPRINT_SCENE.instantiate()
-	footstep_instance.position = position
+	match current_dir:
+		Direction.UP:
+			footstep_instance.position = position + Vector2(0, -footstep_offset*1.5)
+		Direction.DOWN:
+			footstep_instance.position = position + Vector2(0, footstep_offset*1.5)
+		Direction.LEFT:
+			footstep_instance.position = position + Vector2(-footstep_offset, 0)
+		Direction.RIGHT:
+			footstep_instance.position = position + Vector2(footstep_offset, 0)
 	world.add_child(footstep_instance)
 	
 func _on_animated_sprite_2d_frame_changed() -> void:

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="FishData" format=4 uid="uid://cmrauy857phm2"]
+
+[ext_resource type="Script" uid="uid://o66prs8igvbx" path="res://Scripts/FishData.gd" id="1_j8sfw"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_2q6d6"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAABAAAACUAAAAUklGRowAAABXRUJQVlA4TH8AAAAvH8ADECdAkG2bm8c8ljNcTdsGbKiTWK8SZhtNYxr7H9fpz38A/G8nZBMYRLLV5lEENAPNQOAZSPFvCpL/IyGi/wKCggH9wJ+DwfkBvAfA/I75VXm4egGvJukAAQiTXQbKYPoCH2XIAAapAI2EDEAHDqcBrSlAMcHKQACMAOgDAA==")
+size_override = Vector2(32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgbo4"]
+atlas = SubResource("PortableCompressedTexture2D_2q6d6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ash5"]
+atlas = SubResource("PortableCompressedTexture2D_2q6d6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8sfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgbo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ash5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+metadata/imported_via_aw = true
+
+[resource]
+script = ExtResource("1_j8sfw")
+name = "Test Fish"
+sell_value = 99
+sprite_frames = SubResource("SpriteFrames_j8sfw")
+metadata/_custom_type_script = "uid://o66prs8igvbx"
