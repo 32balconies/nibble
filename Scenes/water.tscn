@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dg288p3oiobhx"]
+
+[ext_resource type="Texture2D" uid="uid://dhoa4dspi0jch" path="res://Sprites/water-Sheet.png" id="1_gf5bf"]
+[ext_resource type="Shader" uid="uid://dbv1ajewhk47q" path="res://Shaders/whitewater.gdshader" id="2_bjixy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gf5bf"]
+shader = ExtResource("2_bjixy")
+shader_parameter/wave_strength = 1.0000000475
+shader_parameter/wave_speed = 4.00000019
+shader_parameter/wave_frequency = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqihb"]
+atlas = ExtResource("1_gf5bf")
+region = Rect2(19, 1, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf7k4"]
+atlas = ExtResource("1_gf5bf")
+region = Rect2(37, 1, 16, 16)
+
+[node name="Water" type="Control" unique_id=442416778]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1117856774]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.49763203, 0.5569935, 0.89946324, 1)
+
+[node name="WaterMid" type="TextureRect" parent="." unique_id=346572536]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gf5bf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rqihb")
+stretch_mode = 1
+
+[node name="WaterTop" type="TextureRect" parent="." unique_id=128187133]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_jf7k4")
+stretch_mode = 1

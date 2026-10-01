@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dtkxii11q3asi"]
+
+[ext_resource type="Script" uid="uid://b1btvm6peyj5c" path="res://Scripts/footprint.gd" id="1_2xoui"]
+[ext_resource type="Texture2D" uid="uid://byvet3nm7okwg" path="res://Sprites/footprint.png" id="1_qhidt"]
+[ext_resource type="AudioStream" uid="uid://xt1kngc0y5ba" path="res://Sounds/footstep.wav" id="3_r6ia5"]
+
+[node name="Footprint" type="Node2D" unique_id=1949048949]
+script = ExtResource("1_2xoui")
+range = 0.25
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=189171195]
+texture = ExtResource("1_qhidt")
+offset = Vector2(0, 0.5)
+
+[node name="Timer" type="Timer" parent="." unique_id=927960344]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2055767628]
+stream = ExtResource("3_r6ia5")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
